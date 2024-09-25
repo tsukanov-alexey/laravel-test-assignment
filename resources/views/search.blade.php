@@ -28,7 +28,7 @@
                         <ul id="users" class="mt-4">
                             @foreach ($users as $user)
                                 <li class="flex items-center justify-between py-2">
-                                    <span>{{ $user['name'] }}</span>
+                                    <span>{{ $user->name }}</span>
                                 </li>
                             @endforeach
                         </ul>
