@@ -33,7 +33,7 @@
                             @endforeach
                         </ul>
                     @else
-                        <p>Пользователи с таким именем не найдены...</p>
+                        <p class="mt-1 text-center">Пользователи с таким именем не найдены...</p>
                     @endif
                 @endif
             </div>
