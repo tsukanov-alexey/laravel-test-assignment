@@ -12,11 +12,12 @@
         {{ env('APP_NAME') }}
     </title>
 
-    @vite('resources/css/app.css')
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
 <body class="bg-gray-100">
     @section('main')@show
+    @section('scripts')@show
 </body>
 
 </html>

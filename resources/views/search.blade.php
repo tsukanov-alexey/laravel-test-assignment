@@ -29,6 +29,11 @@
                             @foreach ($users as $user)
                                 <li class="flex items-center justify-between py-2">
                                     <span>{{ $user->name }}</span>
+                                    <div>
+                                        <button class="text-blue-500 hover:text-blue-700 store-btn">
+                                            Добавить
+                                        </button>
+                                    </div>
                                 </li>
                             @endforeach
                         </ul>
@@ -39,4 +44,33 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('scripts')
+    <script>
+        document.querySelectorAll('.store-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                let name = btn.parentNode.parentNode.querySelector('span').innerText;
+
+                btn.disabled = true;
+                btn.classList.remove('text-blue-500', 'hover:text-blue-700');
+                btn.classList.add('text-gray-500', 'cursor-default');
+
+                axios.post("{{ route('users.store') }}", {"name": name})
+                    .then(response => {
+                        if (response.status === 201) {
+                            btn.innerText = 'Добавлено';
+                            btn.classList.remove('text-gray-500');
+                            btn.classList.add('text-green-500');
+                        }
+                    })
+                    .catch(error => {
+                        console.log(error);
+                        btn.disabled = false;
+                        btn.classList.remove('text-gray-500', 'cursor-default');
+                        btn.classList.add('text-blue-500', 'hover:text-blue-700');
+                    });
+            });
+        });
+    </script>
 @endsection
