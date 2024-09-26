@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Services\SearchServiceInterface;
-use Illuminate\Http\Request;
+use App\Http\Requests\SearchRequest;
 
 class SearchController extends Controller
 {
@@ -16,16 +16,12 @@ class SearchController extends Controller
         return view('search');
     }
 
-    public function search(Request $request)
+    public function search(SearchRequest $request)
     {
-        $fields = $request->validate([
-            'query' => ['required', 'string', 'min:2'],
-        ]);
-
-        $users = $this->search->findUsersByName($fields['query']);
+        $users = $this->search->findUsersByName($request['query']);
 
         return view('search', [
-            'query' => $fields['query'],
+            'query' => $request['query'],
             'users' => $users,
         ]);
     }
