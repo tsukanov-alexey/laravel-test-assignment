@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [UserController::class, 'index'])->name('index');
-Route::get('/search', [UserController::class, 'search'])->name('search');
+Route::get('/', [SearchController::class, 'index'])->name('index');
+Route::get('/search', [SearchController::class, 'search'])->name('search');

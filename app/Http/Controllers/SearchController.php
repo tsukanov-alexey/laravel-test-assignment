@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Services\SearchServiceInterface;
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class SearchController extends Controller
 {
     public function __construct(
         private SearchServiceInterface $search,
