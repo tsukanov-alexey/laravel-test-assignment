@@ -4,5 +4,5 @@ use App\Http\Controllers\Api\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::apiResource('users', ProfileController::class)->only([
-    'index', 'store'
-]);
+    'index', 'store', 'destroy'
+])->parameter('users', 'profile');

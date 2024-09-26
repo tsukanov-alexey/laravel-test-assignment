@@ -19,4 +19,9 @@ class ProfileController extends Controller
     {
         return new ProfileResource(Profile::create($request->all()));
     }
+
+    public function destroy(Profile $profile)
+    {
+        $profile->delete();
+    }
 }
